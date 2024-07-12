@@ -1,0 +1,8 @@
+.input-form {
+    border: 2px solid red;
+    display: flex;
+    padding: 20px;
+    /* flex-direction: column;
+    padding-right: 300px;
+} */
+}
