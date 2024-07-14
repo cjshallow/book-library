@@ -8,9 +8,9 @@ function Book(title, author, pages, readStatus) {
 }
 
 function displayBooks() {
-    myLibrary.forEach(function(book) {
-        let libraryDisplay = document.querySelector(".book-library-cards")
-        libraryDisplay.innerHTML = "";    
+    let libraryDisplay = document.querySelector(".book-library-cards");
+    libraryDisplay.innerHTML = ""; 
+    myLibrary.forEach(function(book) {   
             let bookCard = document.createElement('div')
             bookCard.innerHTML = `
             ${book.title}
@@ -19,6 +19,7 @@ function displayBooks() {
             ${book.readStatus ? "Read" : "Not Read"}
             `
         libraryDisplay.appendChild(bookCard);
+        // console.log(myLibrary)
     })
 } 
 
@@ -27,7 +28,7 @@ function addBookToLibrary() {
     let title = document.querySelector("#title").value;
     let author = document.querySelector("#author").value;
     let pages = document.querySelector("#pages").value;
-    let readStatus = document.querySelector("#read").value;
+    let readStatus = document.querySelector("#read").checked;
     let newBook = new Book(title, author, pages, readStatus)
     myLibrary.push(newBook);
     displayBooks();
