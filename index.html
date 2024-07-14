@@ -8,7 +8,8 @@
     <title>Library</title>
 </head>
 <body>
-<div class="input-form">
+<input type="button" name="showForm" value="New Book" onclick="addNewBook()" />
+<div id = "input-form" style="display:none;" class="input-form">
     <label for="title">Book Title:</label>
     <input type="text" id="title" name="title">
     <label for="author">Book Author:</label>
@@ -16,7 +17,7 @@
     <label for="pages">Book Pages:</label>
     <input type="text" id="pages" name="pages">
     <label for="read">Read?</label>
-    <input type="checkbox" id="read" name="read">
+    <input type="checkbox" id="read" name="read" value=true>
     <input type="button" id="add-book-btn" value="Add Book">
 </div>
 <div class = "book-library-cards">

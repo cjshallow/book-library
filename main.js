@@ -12,14 +12,17 @@ function displayBooks() {
     libraryDisplay.innerHTML = ""; 
     myLibrary.forEach(function(book) {   
             let bookCard = document.createElement('div')
-            bookCard.innerHTML = `
-            ${book.title}
-            ${book.author}
-            ${book.pages}
-            ${book.readStatus ? "Read" : "Not Read"}
+            bookCard.innerHTML += `
+            <div class = "card-header">
+                <h2 class = "book-title">${book.title}</h2>
+                <h3 class = "book-author">${book.author}</h3>
+            </div>
+            <div class = "card-body">
+                <p class = "book-pages">${book.pages}</p>
+                <p class = "book-readStatus">${book.readStatus ? "Read" : "Not Read"}</p>
+            </div>
             `
         libraryDisplay.appendChild(bookCard);
-        // console.log(myLibrary)
     })
 } 
 
@@ -38,3 +41,8 @@ function addBookToLibrary() {
 document.querySelector("#add-book-btn").addEventListener("click", function() {
     addBookToLibrary();
 })
+
+
+function addNewBook() {
+    document.getElementById('input-form').style.display = "block";
+}
