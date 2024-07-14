@@ -7,11 +7,19 @@ function Book(title, author, pages, readStatus) {
     this.readStatus = readStatus;
 }
 
-// loop that takes each item of array and displays it in an element, in a function.
-// clicking add book button triggers addition
-
 function displayBooks() {
-
+    myLibrary.forEach(function(book) {
+        let libraryDisplay = document.querySelector(".book-library-cards")
+        libraryDisplay.innerHTML = "";    
+            let bookCard = document.createElement('div')
+            bookCard.innerHTML = `
+            ${book.title}
+            ${book.author}
+            ${book.pages}
+            ${book.readStatus ? "Read" : "Not Read"}
+            `
+        libraryDisplay.appendChild(bookCard);
+    })
 } 
 
 
