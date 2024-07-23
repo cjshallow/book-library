@@ -52,6 +52,7 @@ function addBookToLibrary() {
 
 document.querySelector("#add-book-btn").addEventListener("click", function() {
     addBookToLibrary();
+    document.getElementById('input-form').style.display = "none";
 })
 
 
