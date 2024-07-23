@@ -7,19 +7,31 @@ function Book(title, author, pages, readStatus) {
     this.readStatus = readStatus;
 }
 
+
+function toggleRead(index) {
+    myLibrary[index].readStatus = !myLibrary[index].readStatus;
+    displayBooks();
+}
+
 function displayBooks() {
     let libraryDisplay = document.querySelector(".book-library-cards");
     libraryDisplay.innerHTML = ""; 
-    myLibrary.forEach(function(book) {   
+    myLibrary.forEach(function(book, index) {  
             let bookCard = document.createElement('div')
             bookCard.innerHTML += `
-            <div class = "card-header">
-                <h2 class = "book-title">${book.title}</h2>
-                <h3 class = "book-author">${book.author}</h3>
-            </div>
-            <div class = "card-body">
-                <p class = "book-pages">${book.pages}</p>
-                <p class = "book-readStatus">${book.readStatus ? "Read" : "Not Read"}</p>
+            <div id = "card-full" data-identifier = "newBookCard">
+                <div class = "card-header">
+                    <h2 class = "book-title">${book.title}</h2>
+                    <h3 class = "book-author">${book.author}</h3>
+                </div>
+                <div class = "card-body">
+                    <p class = "book-pages">${book.pages}</p>
+                    <p class = "book-readStatus">${book.readStatus ? "Read" : "Not Read"}</p>
+                </div>
+                <div class = "edit-btns"> 
+                <input type="button" name="remove-button" value="Remove Book" onclick="removeBook(${index})" />
+                <input type="button" name="toggle-read-button" value="Toggle Read" onclick="toggleRead(${index})" />
+                </div>
             </div>
             `
         libraryDisplay.appendChild(bookCard);
@@ -45,4 +57,9 @@ document.querySelector("#add-book-btn").addEventListener("click", function() {
 
 function addNewBook() {
     document.getElementById('input-form').style.display = "block";
+}
+
+function removeBook(index) {
+    myLibrary.splice(index, 1);
+    displayBooks();
 }
